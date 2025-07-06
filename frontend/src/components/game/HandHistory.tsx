@@ -56,9 +56,9 @@ export function HandHistory() {
               {handHistory.map((hand) => (
                 <article
                   key={hand.id}
-                  className="bg-green-600 border-green-500 hover:shadow-2xl"
+                  className="bg-green-600 border-green-500 hover:shadow-2xl rounded-lg p-3"
                 >
-                  <CardContent className="pt-6">
+                  <CardContent className="pt-6 p-3 rounded-lg">
                     <header className="flex justify-between items-center mb-1">
                       <h3 className="font-bold text-yellow-300 font-mono text-sm">{hand.line1}</h3>
                       {hand.status && (
