@@ -30,18 +30,18 @@ export function PlayerSeat({ player, isSelected, onSelect, isCompleted, winnings
   }
 
   return (
-    <Card
+    <article
       onClick={onSelect}
       className={cn(
-        "cursor-pointer border-2 transition-all hover:border-yellow-300 text-white",
+        "cursor-pointer border-2 p-4 rounded-lg transition-all hover:border-yellow-300 text-white",
         getStatusColor(),
         isSelected ? 'border-yellow-400' : 'border-transparent'
       )}
     >
       <CardHeader className="pb-3">
-        <div className="flex justify-between items-start">
-          <h3 className="font-bold text-lg text-white">{player.name}</h3>
-          <div className="flex space-x-1">
+        <header className="flex justify-between items-start">
+          <h3 className="font-bold text-lg text-white">{player?.name}</h3>
+          <nav className="flex space-x-1">
             {getBadges().map((badge) => (
               <Badge
                 key={badge}
@@ -50,48 +50,48 @@ export function PlayerSeat({ player, isSelected, onSelect, isCompleted, winnings
                 {badge}
               </Badge>
             ))}
-          </div>
-        </div>
+          </nav>
+        </header>
       </CardHeader>
 
       <CardContent className="space-y-1 text-sm">
-        <div className="flex justify-between text-white">
+        <section className="flex justify-between text-white">
           <span>Stack:</span>
           <span className="font-mono">${player.stack}</span>
-        </div>
+        </section>
         
-        <div className="flex justify-between text-white">
+        <section className="flex justify-between text-white">
           <span>Current Bet:</span>
           <span className="font-mono">${player.current_bet}</span>
-        </div>
+        </section>
         
-        <div className="flex justify-between text-white">
+        <section className="flex justify-between text-white">
           <span>Total Invested:</span>
           <span className="font-mono">${player.total_invested}</span>
-        </div>
+        </section>
 
         {player.hole_cards && (
-          <div className="flex justify-between text-white">
+          <section className="flex justify-between text-white">
             <span>Cards:</span>
             <span className="font-mono bg-white text-black px-2 py-1 rounded">
               {player.hole_cards}
             </span>
-          </div>
+          </section>
         )}
 
         {player.is_folded && (
-          <div className="text-center text-red-300 font-bold">FOLDED</div>
+          <aside className="text-center text-red-300 font-bold">FOLDED</aside>
         )}
 
         {isCompleted && winnings !== undefined && (
-          <div className="flex justify-between font-bold text-white">
+          <section className="flex justify-between font-bold text-white">
             <span>Result:</span>
             <span className={`font-mono ${winnings >= 0 ? 'text-green-300' : 'text-red-300'}`}>
               {winnings >= 0 ? '+' : ''}${winnings}
             </span>
-          </div>
+          </section>
         )}
       </CardContent>
-    </Card>
+    </article>
   )
 }

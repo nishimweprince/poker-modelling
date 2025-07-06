@@ -16,22 +16,22 @@ export function HandHistory() {
 
   if (isLoading) {
     return (
-      <div className="text-center py-8">
+      <section className="text-center py-8">
         <div className="text-xl">Loading hand history...</div>
-      </div>
+      </section>
     )
   }
 
   if (error) {
     return (
-      <div className="bg-red-600 text-white p-4 rounded">
+      <aside className="bg-red-600 text-white p-4 rounded">
         Error loading hand history: {error}
-      </div>
+      </aside>
     )
   }
 
   return (
-    <div className="max-w-6xl mx-auto">
+    <section className="max-w-6xl mx-auto">
       <Card className="bg-green-700 border-green-600 text-white">
         <CardHeader>
           <CardTitle className="text-2xl font-bold text-white">Hand History</CardTitle>
@@ -48,19 +48,19 @@ export function HandHistory() {
 
         <CardContent>
           {handHistory.length === 0 ? (
-            <div className="text-center py-8 text-green-200">
+            <section className="text-center py-8 text-green-200">
               No completed hands yet. Play some hands to see history here!
-            </div>
+            </section>
           ) : (
-            <div className="space-y-4">
+            <section className="space-y-4">
               {handHistory.map((hand) => (
-                <Card
+                <article
                   key={hand.id}
                   className="bg-green-600 border-green-500 hover:shadow-2xl"
                 >
                   <CardContent className="pt-6">
-                    <div className="flex justify-between items-center mb-1">
-                      <div className="font-bold text-yellow-300 font-mono text-sm">{hand.line1}</div>
+                    <header className="flex justify-between items-center mb-1">
+                      <h3 className="font-bold text-yellow-300 font-mono text-sm">{hand.line1}</h3>
                       {hand.status && (
                         <span
                           className={`ml-2 px-2 py-1 rounded text-xs font-semibold ${hand.status === 'Completed' ? 'bg-blue-700 text-white' : 'bg-yellow-400 text-black'}`}
@@ -68,25 +68,25 @@ export function HandHistory() {
                           {hand.status}
                         </span>
                       )}
-                    </div>
-                    <div className="font-mono text-sm space-y-1">
-                      <div className="text-green-200">{hand.line2}</div>
-                      <div className="text-white">{hand.line3}</div>
-                      <div className="text-blue-200">{hand.line4}</div>
-                      <div className="text-yellow-200 font-bold">{hand.line5}</div>
+                    </header>
+                    <section className="font-mono text-sm space-y-1">
+                      <p className="text-green-200">{hand.line2}</p>
+                      <p className="text-white">{hand.line3}</p>
+                      <p className="text-blue-200">{hand.line4}</p>
+                      <p className="text-yellow-200 font-bold">{hand.line5}</p>
                       {hand.created_at && (
-                        <div className="text-xs text-green-300 mt-2">
+                        <time className="text-xs text-green-300 mt-2 block">
                           {new Date(hand.created_at).toLocaleString()}
-                        </div>
+                        </time>
                       )}
-                    </div>
+                    </section>
                   </CardContent>
-                </Card>
+                </article>
               ))}
-            </div>
+            </section>
           )}
         </CardContent>
       </Card>
-    </div>
+    </section>
   )
 }

@@ -24,15 +24,15 @@ export function GameSetup() {
   }
 
   return (
-    <div className="max-w-2xl mx-auto">
+    <section className="max-w-2xl mx-auto">
       <Card className="bg-green-700 border-green-600 text-white">
         <CardHeader>
           <CardTitle className="text-2xl font-bold text-center text-white">Game Setup</CardTitle>
         </CardHeader>
         <CardContent className="space-y-6">
-          <div className="grid grid-cols-2 gap-4">
+          <form className="grid grid-cols-2 gap-4" onSubmit={e => e.preventDefault()}>
             {stacks.map((stack, index) => (
-              <div key={index} className="flex items-center space-x-3">
+              <fieldset key={index} className="flex items-center space-x-3">
                 <label className="text-lg font-medium w-24 text-white">
                   Player {index + 1}:
                 </label>
@@ -44,21 +44,21 @@ export function GameSetup() {
                   placeholder="Stack size"
                   min="0"
                 />
-              </div>
+              </fieldset>
             ))}
-          </div>
+          </form>
 
-          <div className="text-center space-y-4">
-            <div className="text-sm text-green-200">
+          <section className="text-center space-y-4">
+            <article className="text-sm text-green-200">
               <p>Game Settings:</p>
               <p>Small Blind: 20 | Big Blind: 40 | No Ante</p>
               <p>6-Max Texas Hold&apos;em</p>
-            </div>
+            </article>
 
             {error && (
-              <div className="bg-red-600 text-white p-3 rounded">
+              <aside className="bg-red-600 text-white p-3 rounded">
                 Error: {error}
-              </div>
+              </aside>
             )}
 
             <Button
@@ -69,9 +69,9 @@ export function GameSetup() {
             >
               {isLoading ? 'Starting Game...' : 'Start New Hand'}
             </Button>
-          </div>
+          </section>
         </CardContent>
       </Card>
-    </div>
+    </section>
   )
 }

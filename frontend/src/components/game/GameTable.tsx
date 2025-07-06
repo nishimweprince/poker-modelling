@@ -19,7 +19,7 @@ export function GameTable() {
   const [boardCardsInput, setBoardCardsInput] = useState('')
 
   if (!currentHand) {
-    return <div>No active hand</div>
+    return <section>No active hand</section>
   }
 
   const handleAction = (actionType: string, amount?: number) => {
@@ -56,20 +56,20 @@ export function GameTable() {
   }
 
   return (
-    <div className="max-w-6xl mx-auto">
+    <section className="max-w-6xl mx-auto">
       {error && (
-        <div className="bg-red-600 text-white p-3 rounded mb-4">
+        <aside className="bg-red-600 text-white p-3 rounded mb-4">
           Error: {error}
-        </div>
+        </aside>
       )}
 
       <Card className="bg-green-700 border-green-600 text-white">
         <CardHeader>
-          <div className="flex justify-between items-center">
+          <header className="flex justify-between items-center">
             <CardTitle className="text-2xl font-bold text-white">
               Hand: {currentHand.id.slice(0, 8)}...
             </CardTitle>
-            <div className="flex items-center space-x-4 text-white">
+            <nav className="flex items-center space-x-4 text-white">
               <span className="text-lg">Pot: ${currentHand.pot_size}</span>
               <span className="text-lg">Round: {currentHand.current_round}</span>
               {gamePhase === 'completed' && (
@@ -81,8 +81,8 @@ export function GameTable() {
                   New Hand
                 </Button>
               )}
-            </div>
-          </div>
+            </nav>
+          </header>
         </CardHeader>
 
         <CardContent className="space-y-6">
@@ -90,7 +90,7 @@ export function GameTable() {
           <BoardCards cards={currentHand.board_cards} />
 
           {/* Player Seats */}
-          <div className="grid grid-cols-3 gap-4">
+          <section className="grid grid-cols-3 gap-4">
             {currentHand.players.map((player) => (
               <PlayerSeat
                 key={player.position}
@@ -101,7 +101,7 @@ export function GameTable() {
                 winnings={currentHand.winnings[player.position]}
               />
             ))}
-          </div>
+          </section>
 
           {/* Action Panel */}
           {!currentHand.is_completed && (
@@ -114,15 +114,15 @@ export function GameTable() {
           )}
 
           {/* Card Dealing Controls */}
-          <div className="space-y-4">
+          <section className="space-y-4">
             <Card className="bg-green-600 border-green-500">
               <CardHeader>
                 <CardTitle className="text-lg font-bold text-white">Deal Hole Cards</CardTitle>
               </CardHeader>
               <CardContent className="space-y-3">
-                <div className="grid grid-cols-3 gap-2">
+                <form className="grid grid-cols-3 gap-2" onSubmit={e => e.preventDefault()}>
                   {currentHand.players.map((player) => (
-                    <div key={player.position} className="flex items-center space-x-2">
+                    <fieldset key={player.position} className="flex items-center space-x-2">
                       <label className="text-sm text-white">P{player.position + 1}:</label>
                       <Input
                         type="text"
@@ -134,9 +134,9 @@ export function GameTable() {
                         placeholder="AhKs"
                         className="bg-green-500 border-green-400 text-white text-sm placeholder:text-green-300"
                       />
-                    </div>
+                    </fieldset>
                   ))}
-                </div>
+                </form>
                 <Button
                   onClick={handleDealHoleCards}
                   disabled={isLoading}
@@ -152,7 +152,7 @@ export function GameTable() {
                 <CardTitle className="text-lg font-bold text-white">Deal Board Cards</CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="flex items-center space-x-3">
+                <form className="flex items-center space-x-3" onSubmit={e => e.preventDefault()}>
                   <Input
                     type="text"
                     value={boardCardsInput}
@@ -167,10 +167,10 @@ export function GameTable() {
                   >
                     Deal Board
                   </Button>
-                </div>
+                </form>
               </CardContent>
             </Card>
-          </div>
+          </section>
 
           {/* Hand Completion Status */}
           {currentHand.is_completed && (
@@ -183,6 +183,6 @@ export function GameTable() {
           )}
         </CardContent>
       </Card>
-    </div>
+    </section>
   )
 }

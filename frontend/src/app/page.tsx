@@ -10,14 +10,14 @@ export default function Home() {
   const { gamePhase } = useAppSelector((state) => state.game)
 
   return (
-    <div className="min-h-screen bg-green-800 text-white">
+    <main className="min-h-screen bg-green-800 text-white">
       <header className="bg-green-900 p-4 shadow-lg">
         <h1 className="text-3xl font-bold text-center">Texas Hold&apos;em Poker</h1>
       </header>
 
-      <main className="container mx-auto p-4">
+      <section className="container mx-auto p-4">
         <Tabs defaultValue="game" className="w-full">
-          <div className="flex justify-center mb-6">
+          <nav className="flex justify-center mb-6">
             <TabsList className="bg-green-700 border-green-600">
               <TabsTrigger 
                 value="game" 
@@ -32,7 +32,7 @@ export default function Home() {
                 Hand History
               </TabsTrigger>
             </TabsList>
-          </div>
+          </nav>
 
           <TabsContent value="game">
             {gamePhase === 'setup' && <GameSetup />}
@@ -43,7 +43,7 @@ export default function Home() {
             <HandHistory />
           </TabsContent>
         </Tabs>
-      </main>
-    </div>
+      </section>
+    </main>
   )
 }

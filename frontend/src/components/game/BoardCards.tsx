@@ -29,26 +29,26 @@ export function BoardCards({ cards }: BoardCardsProps) {
         <CardTitle className="text-xl font-bold text-white">Board Cards</CardTitle>
       </CardHeader>
       <CardContent>
-        <div className="flex justify-center space-x-2 mb-3">
+        <section className="flex justify-center space-x-2 mb-3">
           {cardArray.length === 0 ? (
-            <div className="bg-gray-600 w-16 h-24 rounded border-2 border-dashed border-gray-400 flex items-center justify-center">
+            <article className="bg-gray-600 w-16 h-24 rounded border-2 border-dashed border-gray-400 flex items-center justify-center">
               <span className="text-gray-400 text-xs">No cards</span>
-            </div>
+            </article>
           ) : (
             cardArray.map((card, index) => (
-              <div
+              <article
                 key={index}
                 className="bg-white text-black w-16 h-24 rounded border-2 border-gray-300 flex items-center justify-center font-bold text-lg shadow-lg"
               >
                 {card}
-              </div>
+              </article>
             ))
           )}
-        </div>
+        </section>
         {cardArray.length > 0 && (
-          <p className="text-green-200 capitalize">
+          <aside className="text-green-200 capitalize">
             {roundNames[cardArray.length] || 'board'}
-          </p>
+          </aside>
         )}
       </CardContent>
     </Card>
