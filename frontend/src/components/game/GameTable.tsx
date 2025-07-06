@@ -76,7 +76,7 @@ export function GameTable() {
                 <Button
                   onClick={handleNewHand}
                   variant="secondary"
-                  className="bg-blue-600 hover:bg-blue-700 text-white"
+                  className="bg-blue-600 hover:bg-blue-700 text-white cursor-pointer"
                 >
                   New Hand
                 </Button>
@@ -140,7 +140,7 @@ export function GameTable() {
                 <Button
                   onClick={handleDealHoleCards}
                   disabled={isLoading}
-                  className="bg-yellow-600 hover:bg-yellow-700 text-white"
+                  className="bg-yellow-600 hover:bg-yellow-700 text-white cursor-pointer"
                 >
                   Deal Hole Cards
                 </Button>
@@ -163,7 +163,7 @@ export function GameTable() {
                   <Button
                     onClick={handleDealBoard}
                     disabled={isLoading}
-                    className="bg-yellow-600 hover:bg-yellow-700 text-white"
+                    className="bg-yellow-600 hover:bg-yellow-700 text-white cursor-pointer"
                   >
                     Deal Board
                   </Button>
